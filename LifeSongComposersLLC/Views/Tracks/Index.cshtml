@@ -1,0 +1,103 @@
+﻿@model IEnumerable<LifeSongComposers.Models.Track>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Tracks</h1>
+<audio id="audio"></audio>
+
+<p>
+    @*<a asp-action="Create">Create New</a>*@
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artist)
+            </th>
+            <th>Vocalists</th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/play.png" height="40" width="40" alt="play" onclick="play(this)" data-title="@item.Name" data-file-location="@item.Url" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genres.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Artist)
+                </td>
+
+                <td>
+                    <img src="~/images/arrow.png" height="40" width="40" />
+                </td>
+                @*
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Url)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedBy)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function play(x) {
+        var audio = document.getElementById('audio');
+
+        if (audio.paused) {
+            var title = x.getAttribute("data-title");
+
+            var location = x.getAttribute("data-file-location");
+
+            x.src = "images/pause.png";
+            audio.src = location;
+            audio.play();
+
+        } else {
+
+            audio.pause();
+            x.src = "images/play.png";
+        }
+    }
+</script>

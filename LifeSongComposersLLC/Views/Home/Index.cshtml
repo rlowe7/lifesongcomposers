@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container" style="padding-bottom:40px">
+    <h1 class="jumbotron-heading">Your Story<br />Your Song</h1>
+    <p class="lead text-muted">Custom songs for your special day in three easy steps!</p>
+    <p>
+        @*<a href="#" class="btn btn-primary my-2">Main call to action</a>
+            <a href="#" class="btn btn-secondary my-2">Secondary action</a>*@
+    </p>
+    <div class="jumbotron">
+        @*<h1 class="display-4">Hello, world!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>*@
+        <img class="rounded mx-auto d-block" src="~/images/couple-resize.jpg" alt="couple" width="720" height="480" />
+    </div>
+
+</div>
+
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-4">
+                <img class="rounded-circle" src="~/images/1.png" alt="1st step" width="125" height="125">
+                <h2>Choose Track</h2>
+                <p>Find a track that sets the mood you're lookin for. Rock, Pop, Country or Hip Hop</p>
+                <p> @Html.ActionLink("View Details", "Index", "Tracks", null, new { @class = " btn-secondary" })</p>
+
+
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="rounded-circle" src="~/images/2.png" alt="2nd step" width="125" height="125">
+                <h2>Choose Vocalist</h2>
+                <p>Pick a vocalist that will deliver you message with their vocal talents over the track</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="rounded-circle" src="~/images/3.png" alt="3rd step" width="125" height="125">
+                <h2>Submit Story</h2>
+                <p>Send you love story to us to create the lyrics for your song.</p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+    </div>
+</div>
+
+
