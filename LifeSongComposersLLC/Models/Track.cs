@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace LifeSongComposers.Models
+namespace LifeSongComposersLLC.Models
 {
     public class Track:CreatedDateAndBy
     {
@@ -12,9 +12,10 @@ namespace LifeSongComposers.Models
         public string Name { get; set; }
         public string Artist { get; set; }
         public string Description { get; set; }
+        public virtual ICollection<FilePath> FilePaths { get; set; }
         public string Url { get; set; }
-        public Genres Genres { get; set; }
-        public int GenresId { get; set; }
+        public Genre Genre { get; set; }
+        public int GenreId { get; set; }
        
         
     }

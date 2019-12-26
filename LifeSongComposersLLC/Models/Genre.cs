@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
-namespace LifeSongComposers.Models
+
+namespace LifeSongComposersLLC.Models
 {
-    public class Genres : CreatedDateAndBy
+    public class Genre : CreatedDateAndBy
     {
-        public int GenresId { get; set; }
+        [Key]
+        public int GenreId { get; set; }
         public string Name { get; set; }
         public List<Track> Tracks { get; set; }
     }

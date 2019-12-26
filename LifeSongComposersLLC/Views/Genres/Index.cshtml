@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LifeSongComposers.Models.Genres>
+﻿@model IEnumerable<LifeSongComposersLLC.Models.Genre>
 
 @{
     ViewBag.Title = "Index";
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.CreatedBy)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GenresId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GenresId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GenresId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.GenreId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GenreId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GenreId })
         </td>
     </tr>
 }

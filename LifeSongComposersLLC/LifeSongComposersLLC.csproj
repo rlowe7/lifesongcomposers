@@ -132,8 +132,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912261937205_Initial.cs" />
+    <Compile Include="Migrations\201912261937205_Initial.Designer.cs">
+      <DependentUpon>201912261937205_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CreatedDateAndBy.cs" />
     <Compile Include="Models\ErrorViewModel.cs" />
+    <Compile Include="Models\FilePath.cs" />
+    <Compile Include="Models\FileType.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\LifeSongComposersLLCContext.cs" />
     <Compile Include="Models\Track.cs" />
@@ -158,6 +165,7 @@
     <Content Include="images\play.png" />
     <Content Include="mp3\fourletter.mp3" />
     <Content Include="mp3\jazz.mp3" />
+    <Content Include="mp3\Pretty-VocalMaster.mp3" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
@@ -188,16 +196,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Tracks\Create.cshtml" />
-    <Content Include="Views\Tracks\Delete.cshtml" />
-    <Content Include="Views\Tracks\Details.cshtml" />
-    <Content Include="Views\Tracks\Edit.cshtml" />
-    <Content Include="Views\Tracks\Index.cshtml" />
     <Content Include="Views\Genres\Create.cshtml" />
     <Content Include="Views\Genres\Delete.cshtml" />
     <Content Include="Views\Genres\Details.cshtml" />
     <Content Include="Views\Genres\Edit.cshtml" />
     <Content Include="Views\Genres\Index.cshtml" />
+    <Content Include="Views\Tracks\Create.cshtml" />
+    <Content Include="Views\Tracks\Delete.cshtml" />
+    <Content Include="Views\Tracks\Details.cshtml" />
+    <Content Include="Views\Tracks\Edit.cshtml" />
+    <Content Include="Views\Tracks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -214,6 +222,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912261937205_Initial.resx">
+      <DependentUpon>201912261937205_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LifeSongComposers.Models
+namespace LifeSongComposersLLC.Models
 {
     public class CreatedDateAndBy
     {

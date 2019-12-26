@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using LifeSongComposers.Models;
+using System.IO;
 using LifeSongComposersLLC.Models;
 
 namespace LifeSongComposersLLC.Controllers
@@ -18,7 +18,7 @@ namespace LifeSongComposersLLC.Controllers
         // GET: Tracks
         public ActionResult Index()
         {
-            var tracks = db.Tracks.Include(t => t.Genres);
+            var tracks = db.Tracks.Include(t => t.Genre);
             return View(tracks.ToList());
         }
 
@@ -40,7 +40,7 @@ namespace LifeSongComposersLLC.Controllers
         // GET: Tracks/Create
         public ActionResult Create()
         {
-            ViewBag.GenresId = new SelectList(db.Genres, "GenresId", "Name");
+            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name");
             return View();
         }
 
@@ -49,17 +49,40 @@ namespace LifeSongComposersLLC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Artist,Description,Url,GenresId,CreatedDate,CreatedBy")] Track track)
+        public ActionResult Create([Bind(Include = "Id,Name,Artist,Description,Url,GenreId,CreatedDate,CreatedBy")] Track track, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                db.Tracks.Add(track);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                try
+                {
 
-            ViewBag.GenresId = new SelectList(db.Genres, "GenresId", "Name", track.GenresId);
+
+                    if (upload != null && upload.ContentLength > 0)
+                    {
+
+                        string fileName = Path.GetFileName(upload.FileName);
+                        string path = Path.Combine(Server.MapPath("~/mp3/"), fileName);
+                        upload.SaveAs(path);
+
+                        track.Url = "mp3/" + fileName;
+                        db.Tracks.Add(track);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMessage = "File upload Failed " + ex.ToString();
+                    ViewBag.GenresId = new SelectList(db.Genres, "GenreId", "Name", track.GenreId);
+                    return View(track);
+                }
+
+            }
+            ViewBag.GenresId = new SelectList(db.Genres, "GenreId", "Name", track.GenreId);
             return View(track);
+
+
+          
         }
 
         // GET: Tracks/Edit/5
@@ -74,7 +97,7 @@ namespace LifeSongComposersLLC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.GenresId = new SelectList(db.Genres, "GenresId", "Name", track.GenresId);
+            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", track.GenreId);
             return View(track);
         }
 
@@ -83,7 +106,7 @@ namespace LifeSongComposersLLC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Artist,Description,Url,GenresId,CreatedDate,CreatedBy")] Track track)
+        public ActionResult Edit([Bind(Include = "Id,Name,Artist,Description,Url,GenreId,CreatedDate,CreatedBy")] Track track)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +114,7 @@ namespace LifeSongComposersLLC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.GenresId = new SelectList(db.Genres, "GenresId", "Name", track.GenresId);
+            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", track.GenreId);
             return View(track);
         }
 

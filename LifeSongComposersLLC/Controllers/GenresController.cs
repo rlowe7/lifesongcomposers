@@ -6,7 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using LifeSongComposers.Models;
 using LifeSongComposersLLC.Models;
 
 namespace LifeSongComposersLLC.Controllers
@@ -28,12 +27,12 @@ namespace LifeSongComposersLLC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Genres genres = db.Genres.Find(id);
-            if (genres == null)
+            Genre genre = db.Genres.Find(id);
+            if (genre == null)
             {
                 return HttpNotFound();
             }
-            return View(genres);
+            return View(genre);
         }
 
         // GET: Genres/Create
@@ -47,16 +46,16 @@ namespace LifeSongComposersLLC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GenresId,Name,CreatedDate,CreatedBy")] Genres genres)
+        public ActionResult Create([Bind(Include = "GenreId,Name,CreatedDate,CreatedBy")] Genre genre)
         {
             if (ModelState.IsValid)
             {
-                db.Genres.Add(genres);
+                db.Genres.Add(genre);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(genres);
+            return View(genre);
         }
 
         // GET: Genres/Edit/5
@@ -66,12 +65,12 @@ namespace LifeSongComposersLLC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Genres genres = db.Genres.Find(id);
-            if (genres == null)
+            Genre genre = db.Genres.Find(id);
+            if (genre == null)
             {
                 return HttpNotFound();
             }
-            return View(genres);
+            return View(genre);
         }
 
         // POST: Genres/Edit/5
@@ -79,15 +78,15 @@ namespace LifeSongComposersLLC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GenresId,Name,CreatedDate,CreatedBy")] Genres genres)
+        public ActionResult Edit([Bind(Include = "GenreId,Name,CreatedDate,CreatedBy")] Genre genre)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(genres).State = EntityState.Modified;
+                db.Entry(genre).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(genres);
+            return View(genre);
         }
 
         // GET: Genres/Delete/5
@@ -97,12 +96,12 @@ namespace LifeSongComposersLLC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Genres genres = db.Genres.Find(id);
-            if (genres == null)
+            Genre genre = db.Genres.Find(id);
+            if (genre == null)
             {
                 return HttpNotFound();
             }
-            return View(genres);
+            return View(genre);
         }
 
         // POST: Genres/Delete/5
@@ -110,8 +109,8 @@ namespace LifeSongComposersLLC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Genres genres = db.Genres.Find(id);
-            db.Genres.Remove(genres);
+            Genre genre = db.Genres.Find(id);
+            db.Genres.Remove(genre);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
