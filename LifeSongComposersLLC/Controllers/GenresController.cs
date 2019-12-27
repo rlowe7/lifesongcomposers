@@ -50,6 +50,8 @@ namespace LifeSongComposersLLC.Controllers
         {
             if (ModelState.IsValid)
             {
+                genre.CreatedBy = "Admin";
+                genre.CreatedDate = DateTime.Now;
                 db.Genres.Add(genre);
                 db.SaveChanges();
                 return RedirectToAction("Index");
