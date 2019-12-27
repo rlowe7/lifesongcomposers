@@ -65,9 +65,17 @@ namespace LifeSongComposersLLC.Controllers
                         upload.SaveAs(path);
 
                         track.Url = "mp3/" + fileName;
+                        track.CreatedBy = "admin";
+                        track.CreatedDate = DateTime.Now;
                         db.Tracks.Add(track);
                         db.SaveChanges();
                         return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        ViewBag.ErrorMessage = "No file chosen or empty file";
+                        ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name");
+                        return View(track);
                     }
                 }
                 catch (Exception ex)
@@ -78,11 +86,13 @@ namespace LifeSongComposersLLC.Controllers
                 }
 
             }
-            ViewBag.GenresId = new SelectList(db.Genres, "GenreId", "Name", track.GenreId);
+
+           
+            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name");
             return View(track);
 
 
-          
+
         }
 
         // GET: Tracks/Edit/5
