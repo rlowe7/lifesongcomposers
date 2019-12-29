@@ -40,7 +40,7 @@ namespace LifeSongComposersLLC.Controllers
         // GET: Tracks/Create
         public ActionResult Create()
         {
-            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name");
+            ViewBag.GenreList = new SelectList(db.Genres, "GenreId", "Name");
             return View();
         }
 
@@ -59,6 +59,7 @@ namespace LifeSongComposersLLC.Controllers
 
                     if (upload != null && upload.ContentLength > 0)
                     {
+                        ViewBag.GenreList = new SelectList(db.Genres, "GenreId", "Name");
 
                         string fileName = Path.GetFileName(upload.FileName);
                         string path = Path.Combine(Server.MapPath("~/mp3/"), fileName);
@@ -74,21 +75,21 @@ namespace LifeSongComposersLLC.Controllers
                     else
                     {
                         ViewBag.ErrorMessage = "No file chosen or empty file";
-                        ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name");
+                        ViewBag.GenreList = new SelectList(db.Genres, "GenreId", "Name");
                         return View(track);
                     }
                 }
                 catch (Exception ex)
                 {
                     ViewBag.ErrorMessage = "File upload Failed " + ex.ToString();
-                    ViewBag.GenresId = new SelectList(db.Genres, "GenreId", "Name", track.GenreId);
+                    ViewBag.GenresList = new SelectList(db.Genres, "GenreId", "Name");
                     return View(track);
                 }
 
             }
 
-           
-            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name");
+          
+            ViewBag.GenreList = new SelectList(db.Genres, "GenreId", "Name");
             return View(track);
 
 
@@ -107,7 +108,7 @@ namespace LifeSongComposersLLC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", track.GenreId);
+            ViewBag.GenreList = new SelectList(db.Genres, "GenreId", "Name", track.GenreId);
             return View(track);
         }
 
@@ -124,7 +125,7 @@ namespace LifeSongComposersLLC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", track.GenreId);
+            ViewBag.GenreList = new SelectList(db.Genres, "GenreId", "Name", track.GenreId);
             return View(track);
         }
 
