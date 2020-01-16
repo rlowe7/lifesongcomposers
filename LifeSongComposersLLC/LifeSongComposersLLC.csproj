@@ -129,12 +129,17 @@
     <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TracksController.cs" />
+    <Compile Include="Controllers\VocalistsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201912261937205_Initial.cs" />
     <Compile Include="Migrations\201912261937205_Initial.Designer.cs">
       <DependentUpon>201912261937205_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912290036397_vocalist to track.cs" />
+    <Compile Include="Migrations\201912290036397_vocalist to track.Designer.cs">
+      <DependentUpon>201912290036397_vocalist to track.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CreatedDateAndBy.cs" />
@@ -144,6 +149,7 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\LifeSongComposersLLCContext.cs" />
     <Compile Include="Models\Track.cs" />
+    <Compile Include="Models\TrackVocalistViewModel.cs" />
     <Compile Include="Models\Vocalist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -206,6 +212,11 @@
     <Content Include="Views\Tracks\Details.cshtml" />
     <Content Include="Views\Tracks\Edit.cshtml" />
     <Content Include="Views\Tracks\Index.cshtml" />
+    <Content Include="Views\Vocalists\Create.cshtml" />
+    <Content Include="Views\Vocalists\Delete.cshtml" />
+    <Content Include="Views\Vocalists\Details.cshtml" />
+    <Content Include="Views\Vocalists\Edit.cshtml" />
+    <Content Include="Views\Vocalists\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -226,6 +237,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201912261937205_Initial.resx">
       <DependentUpon>201912261937205_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912290036397_vocalist to track.resx">
+      <DependentUpon>201912290036397_vocalist to track.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

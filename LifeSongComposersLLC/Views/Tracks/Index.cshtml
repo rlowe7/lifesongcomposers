@@ -3,7 +3,13 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<style>
+    .arrow {
+        background-image: url("../../images/arrow.png");
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+    }
+</style>
 <h1>Tracks</h1>
 <audio id="audio"></audio>
 
@@ -59,7 +65,8 @@
                 </td>
 
                 <td>
-                    <img src="~/images/arrow.png" height="40" width="40" />
+                  
+                    @Html.ActionLink("To Vocalist","Details","Vocalists",new { id = item.Id}, null)
                 </td>
                 @*
                     <td>

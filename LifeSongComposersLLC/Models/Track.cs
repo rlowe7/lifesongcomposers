@@ -8,6 +8,10 @@ namespace LifeSongComposersLLC.Models
 {
     public class Track:CreatedDateAndBy
     {
+        public Track()
+        {
+            this.vocalists = new HashSet<Vocalist>();
+        }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Artist { get; set; }
@@ -16,6 +20,7 @@ namespace LifeSongComposersLLC.Models
         public string Url { get; set; }
         public Genre Genre { get; set; }
         public int GenreId { get; set; }
+        public ICollection<Vocalist> vocalists { get; set; }
        
         
     }

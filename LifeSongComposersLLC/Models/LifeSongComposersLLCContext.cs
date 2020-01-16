@@ -24,5 +24,7 @@ namespace LifeSongComposersLLC.Models
         public System.Data.Entity.DbSet<LifeSongComposersLLC.Models.Genre> Genres { get; set; }
 
         public System.Data.Entity.DbSet<LifeSongComposersLLC.Models.FilePath> FilePaths { get; set; }
+
+        public System.Data.Entity.DbSet<LifeSongComposersLLC.Models.Vocalist> Vocalists { get; set; }
     }
 }
